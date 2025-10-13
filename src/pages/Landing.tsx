@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Mail, Phone, Youtube, Instagram, Loader2 } from "lucide-react";
+import { ExternalLink, Mail, Phone, Youtube, Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 import LightboxModal from "@/components/LightboxModal";
 
@@ -35,7 +35,6 @@ export default function Landing() {
   const [skills, setSkills] = useState<Skills | null>(null);
   const [projects, setProjects] = useState<ProjectDetails | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
-  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -51,28 +50,6 @@ export default function Landing() {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleResumeDownload = async () => {
-    setIsDownloading(true);
-    try {
-      const response = await fetch("https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg");
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "Karthik_Goud_Resume.jpg";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Download failed:", error);
-      // Fallback to opening in new tab
-      window.open("https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg", "_blank");
-    } finally {
-      setIsDownloading(false);
-    }
   };
 
   if (!profile || !skills || !projects) {
@@ -161,16 +138,6 @@ export default function Landing() {
           backgroundPosition: "center",
         }}
       >
-        {/* DOWNLOAD RESUME button */}
-        <motion.button
-          whileHover={{ scale: 1.05, rotate: 2 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleResumeDownload}
-          className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
-        >
-          {isDownloading ? "DOWNLOADING..." : "DOWNLOAD RESUME"}
-        </motion.button>
-
         <div className="max-w-7xl w-full flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center justify-start md:justify-center relative z-10">
           {/* Profile Image - First on mobile, second on desktop */}
           <motion.div
@@ -363,3 +330,84 @@ export default function Landing() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-center pb-6">
                   <h3 className="text-2xl font-black text-white text-center px-4">
                     {project.title}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-8 bg-[#0080FF]">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 md:mb-12 text-white transform -rotate-2"
+          >
+            CONTACT
+          </motion.h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12">
+            <motion.a
+              href={`tel:${profile.phone}`}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              className="bg-white text-black p-4 sm:p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-3 sm:gap-4 font-bold text-sm sm:text-base md:text-lg cursor-pointer"
+            >
+              <Phone size={24} strokeWidth={3} />
+              {profile.phone}
+            </motion.a>
+            <motion.a
+              href={`mailto:${profile.email}`}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              className="bg-white text-black p-4 sm:p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-3 sm:gap-4 font-bold text-sm sm:text-base md:text-lg cursor-pointer break-all sm:break-normal"
+            >
+              <Mail size={24} strokeWidth={3} />
+              {profile.email}
+            </motion.a>
+          </div>
+          <div className="flex justify-center gap-4 sm:gap-6">
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.2, rotate: 10 }}
+              className="bg-[#FF0080] p-4 border-4 border-black shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] transition-all cursor-pointer"
+            >
+              <Youtube size={32} strokeWidth={3} className="text-white" />
+            </motion.a>
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.2, rotate: -10 }}
+              className="bg-[#00FF80] p-4 border-4 border-black shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] transition-all cursor-pointer"
+            >
+              <Instagram size={32} strokeWidth={3} className="text-black" />
+            </motion.a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-8 bg-black border-t-4 border-white">
+        <p className="text-center text-white font-bold text-sm sm:text-base md:text-lg">
+          © 2025 {profile.name} - ALL RIGHTS RESERVED
+        </p>
+      </footer>
+
+      {/* Lightbox Modal */}
+      {selectedProject && (
+        <LightboxModal
+          title={selectedProject.title}
+          images={selectedProject.images}
+          description={selectedProject.description}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
+  );
+}
