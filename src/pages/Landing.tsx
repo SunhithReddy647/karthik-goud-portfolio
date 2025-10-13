@@ -232,25 +232,56 @@ export default function Landing() {
             {projects.projects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 3 : -3 }}
+                transition={{ 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: index % 2 === 0 ? 3 : -3,
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedProject(project)}
-                className="relative group cursor-pointer overflow-hidden border-4 border-white shadow-[8px_8px_0px_#FF0080] hover:shadow-[12px_12px_0px_#00FF80] transition-all"
+                className="relative group cursor-pointer overflow-hidden border-4 border-white shadow-[8px_8px_0px_#FF0080] hover:shadow-[12px_12px_0px_#00FF80] transition-shadow duration-300"
               >
-                <img
+                <motion.img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-64 object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
                 />
-                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <motion.div 
+                  className="absolute inset-0 bg-black/80 flex items-center justify-center"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <div className="text-center">
-                    <h3 className="text-2xl font-black text-white mb-2">{project.title}</h3>
-                    <ExternalLink className="mx-auto text-[#00FF80]" size={32} strokeWidth={3} />
+                    <motion.h3 
+                      className="text-2xl font-black text-white mb-2"
+                      initial={{ y: 20, opacity: 0 }}
+                      whileHover={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                    >
+                      {project.title}
+                    </motion.h3>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileHover={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                    >
+                      <ExternalLink className="mx-auto text-[#00FF80]" size={32} strokeWidth={3} />
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
