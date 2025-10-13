@@ -110,43 +110,13 @@ export default function Landing() {
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
-              {profile.name}
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 text-[#00FF80] font-bold">
-              {profile.role}
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection("portfolio")}
-                className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
-              >
-                VIEW WORK
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection("contact")}
-                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
-              >
-                CONTACT ME
-              </motion.button>
-            </div>
-          </motion.div>
-
+        <div className="max-w-7xl w-full flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center justify-start md:justify-center relative z-10">
+          {/* Profile Image - First on mobile, second on desktop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center"
+            className="flex justify-center order-1 md:order-2 mb-6 sm:mb-8 md:mb-0"
           >
             <div className="relative">
               <motion.div
@@ -156,7 +126,7 @@ export default function Landing() {
                 <img
                   src={profile.profileImage}
                   alt={profile.name}
-                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
+                  className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
                 />
               </motion.div>
               <motion.div
@@ -167,6 +137,39 @@ export default function Landing() {
               >
                 CREATIVE DESIGNER
               </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Text Content - Second on mobile, first on desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="order-2 md:order-1 text-center md:text-left"
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 leading-tight">
+              {profile.name}
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 text-[#00FF80] font-bold">
+              {profile.role}
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start">
+              <motion.button
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("portfolio")}
+                className="w-full sm:w-auto bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
+              >
+                VIEW WORK
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("contact")}
+                className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+              >
+                CONTACT ME
+              </motion.button>
             </div>
           </motion.div>
         </div>
