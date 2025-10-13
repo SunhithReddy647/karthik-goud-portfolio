@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "id": "mockup",
+      "title": "Mockup",
+      "coverImage": "https://harmless-tapir-303.convex.cloud/api/storage/cb043e5e-1826-43f0-b36a-5ab8e4a316a1",
+      "images": [
+        "https://harmless-tapir-303.convex.cloud/api/storage/cb043e5e-1826-43f0-b36a-5ab8e4a316a1"
+      ],
+      "description": "Professional mockup designs showcasing branding and packaging concepts."
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "coverImage": "https://harmless-tapir-303.convex.cloud/api/storage/7d521fd7-1be7-48d4-980b-c71c4a92d6f5",
+      "images": [
+        "https://harmless-tapir-303.convex.cloud/api/storage/7d521fd7-1be7-48d4-980b-c71c4a92d6f5"
+      ],
+      "description": "Creative typography designs featuring unique lettering and text compositions."
+    },
+    {
+      "id": "brand-design",
+      "title": "Brand Design",
+      "coverImage": "https://i.pinimg.com/1200x/5d/86/87/5d8687281b84177e74453df08239188d.jpg",
+      "images": [
+        "https://i.pinimg.com/1200x/5d/86/87/5d8687281b84177e74453df08239188d.jpg"
+      ],
+      "description": "Complete brand identity designs including logos, color schemes, and visual guidelines."
+    },
+    {
+      "id": "magazine-cover",
+      "title": "Magazine Cover",
+      "coverImage": "https://i.ibb.co/bjSDhkSK/7f7b2a0d87b4da872915f7507e51ac26.jpg",
+      "images": [
+        "https://i.ibb.co/bjSDhkSK/7f7b2a0d87b4da872915f7507e51ac26.jpg"
+      ],
+      "description": "Eye-catching magazine cover designs with compelling layouts and typography."
+    },
+    {
+      "id": "matte-painting",
+      "title": "Matte Painting",
+      "coverImage": "https://i.pinimg.com/1200x/86/60/62/866062c5d781c91ec632d614e027b787.jpg",
+      "images": [
+        "https://i.pinimg.com/1200x/86/60/62/866062c5d781c91ec632d614e027b787.jpg"
+      ],
+      "description": "Digital matte paintings creating immersive environments and atmospheric scenes."
+    },
+    {
+      "id": "video-editing",
+      "title": "Video Editing Premiere Pro",
+      "coverImage": "https://i.pinimg.com/1200x/4c/94/88/4c9488270a972ac8993eff0f1caed120.jpg",
+      "images": [
+        "https://i.pinimg.com/1200x/4c/94/88/4c9488270a972ac8993eff0f1caed120.jpg"
+      ],
+      "description": "Professional video editing projects showcasing storytelling and visual effects."
+    }
+  ]
+}

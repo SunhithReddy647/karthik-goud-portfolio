@@ -18,26 +18,29 @@ interface Skills {
   skills: string[];
 }
 
-interface Project {
+interface ProjectDetail {
+  id: string;
   title: string;
-  image: string;
+  coverImage: string;
+  images: string[];
+  description?: string;
 }
 
-interface Projects {
-  projects: Project[];
+interface ProjectDetails {
+  projects: ProjectDetail[];
 }
 
 export default function Landing() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [skills, setSkills] = useState<Skills | null>(null);
-  const [projects, setProjects] = useState<Projects | null>(null);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<ProjectDetails | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
 
   useEffect(() => {
     Promise.all([
       fetch("/data/profile.json").then((r) => r.json()),
       fetch("/data/skills.json").then((r) => r.json()),
-      fetch("/data/projects.json").then((r) => r.json()),
+      fetch("/data/project-details.json").then((r) => r.json()),
     ]).then(([profileData, skillsData, projectsData]) => {
       setProfile(profileData);
       setSkills(skillsData);
@@ -272,7 +275,7 @@ export default function Landing() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {projects.projects.map((project, index) => (
               <motion.div
-                key={index}
+                key={project.id}
                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -293,7 +296,7 @@ export default function Landing() {
                 className="relative group cursor-pointer overflow-hidden border-4 border-white shadow-[8px_8px_0px_#FF0080] hover:shadow-[12px_12px_0px_#00FF80] transition-shadow duration-300"
               >
                 <motion.img
-                  src={project.image}
+                  src={project.coverImage}
                   alt={project.title}
                   className="w-full h-64 object-cover"
                   whileHover={{ scale: 1.1 }}
@@ -374,8 +377,9 @@ export default function Landing() {
       {/* Lightbox Modal */}
       {selectedProject && (
         <LightboxModal
-          image={selectedProject.image}
           title={selectedProject.title}
+          images={selectedProject.images}
+          description={selectedProject.description}
           onClose={() => setSelectedProject(null)}
         />
       )}
