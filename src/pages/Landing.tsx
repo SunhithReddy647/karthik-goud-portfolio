@@ -199,17 +199,17 @@ export default function Landing() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-24 px-8 bg-black">
+      <section id="education" className="py-16 sm:py-24 px-4 sm:px-8 bg-black">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 md:mb-12 text-white text-center transform rotate-2"
           >
             EDUCATION
           </motion.h2>
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {profile.education.map((edu, index) => (
               <motion.div
                 key={index}
@@ -230,17 +230,17 @@ export default function Landing() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 px-8 bg-[#FF0080]">
+      <section id="skills" className="py-16 sm:py-24 px-4 sm:px-8 bg-[#FF0080]">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform -rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 md:mb-12 text-white text-center transform -rotate-2"
           >
             SKILLS
           </motion.h2>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {skills.skills.map((skill, index) => (
               <motion.div
                 key={index}
@@ -259,17 +259,17 @@ export default function Landing() {
       </section>
 
       {/* Portfolio Gallery Section */}
-      <section id="portfolio" className="py-24 px-8 bg-black">
+      <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 md:mb-12 text-white text-center transform rotate-2"
           >
             MY WORK
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {projects.projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -330,17 +330,17 @@ export default function Landing() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-8 bg-[#0080FF]">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-8 bg-[#0080FF]">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white transform -rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 sm:mb-8 md:mb-12 text-white transform -rotate-2"
           >
             CONTACT
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12">
             <motion.a
               href={`tel:${profile.phone}`}
               initial={{ opacity: 0, x: -30 }}
@@ -364,7 +364,7 @@ export default function Landing() {
               {profile.email}
             </motion.a>
           </div>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-4 sm:gap-6">
             <motion.a
               href="#"
               whileHover={{ scale: 1.2, rotate: 10 }}
