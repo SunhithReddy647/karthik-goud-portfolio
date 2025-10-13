@@ -83,23 +83,46 @@ export default function Landing() {
               {profile.name}
             </motion.h1>
             <div className="flex gap-2 sm:gap-4 md:gap-6 items-center">
-              {[
-                { label: "About", id: "about" },
-                { label: "Education", id: "education" },
-                { label: "Skills", id: "skills" },
-                { label: "Work", id: "portfolio" },
-                { label: "Contact", id: "contact" },
-              ].map((link, index) => (
-                <motion.button
-                  key={link.id}
-                  whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 2 : -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(link.id)}
-                  className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("about")}
+                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+              >
+                About
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("education")}
+                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+              >
+                Education
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("skills")}
+                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+              >
+                Skills
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("portfolio")}
+                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+              >
+                Work
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("contact")}
+                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+              >
+                Contact
+              </motion.button>
             </div>
           </div>
         </div>
