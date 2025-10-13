@@ -87,18 +87,18 @@ export default function Landing() {
             >
               CREATIVE DESIGNER
             </motion.div>
-            <h1 className="text-6xl md:text-7xl font-black mb-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
               {profile.name}
             </h1>
-            <p className="text-2xl md:text-3xl mb-8 text-[#00FF80] font-bold">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 text-[#00FF80] font-bold">
               {profile.role}
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <motion.button
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("portfolio")}
-                className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
+                className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
               >
                 VIEW WORK
               </motion.button>
@@ -106,7 +106,7 @@ export default function Landing() {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("contact")}
-                className="bg-black text-white px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
               >
                 CONTACT ME
               </motion.button>
@@ -127,7 +127,7 @@ export default function Landing() {
               <img
                 src={profile.profileImage}
                 alt={profile.name}
-                className="w-80 h-80 rounded-full border-8 border-black shadow-[12px_12px_0px_#FF0080] object-cover"
+                className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
               />
             </motion.div>
           </motion.div>
@@ -141,7 +141,7 @@ export default function Landing() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black mb-8 text-black text-center transform -rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-black text-center transform -rotate-2"
           >
             ABOUT ME
           </motion.h2>
@@ -150,7 +150,7 @@ export default function Landing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-black leading-relaxed bg-white p-8 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed bg-white p-4 sm:p-6 md:p-8 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold"
           >
             {profile.about}
           </motion.p>
@@ -164,11 +164,11 @@ export default function Landing() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform rotate-2"
           >
             EDUCATION
           </motion.h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {profile.education.map((edu, index) => (
               <motion.div
                 key={index}
@@ -177,11 +177,11 @@ export default function Landing() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
                 whileHover={{ y: -8, rotate: index % 2 === 0 ? 2 : -2 }}
-                className="bg-[#0080FF] p-8 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#000000] transition-all cursor-pointer"
+                className="bg-[#0080FF] p-4 sm:p-6 md:p-8 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#000000] transition-all cursor-pointer"
               >
-                <h3 className="text-2xl font-black mb-2 text-white">{edu.degree}</h3>
-                <p className="text-lg font-bold text-black mb-1">{edu.institute}</p>
-                <p className="text-md font-bold text-white">{edu.years}</p>
+                <h3 className="text-xl sm:text-2xl font-black mb-2 text-white">{edu.degree}</h3>
+                <p className="text-base sm:text-lg font-bold text-black mb-1">{edu.institute}</p>
+                <p className="text-sm sm:text-md font-bold text-white">{edu.years}</p>
               </motion.div>
             ))}
           </div>
@@ -195,11 +195,11 @@ export default function Landing() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform -rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform -rotate-2"
           >
             SKILLS
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {skills.skills.map((skill, index) => (
               <motion.div
                 key={index}
@@ -208,7 +208,7 @@ export default function Landing() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="bg-black text-[#00FF80] px-6 py-4 border-4 border-white shadow-[6px_6px_0px_#000000] font-bold text-center text-lg cursor-pointer"
+                className="bg-black text-[#00FF80] px-3 sm:px-4 md:px-6 py-3 sm:py-4 border-4 border-white shadow-[6px_6px_0px_#000000] font-bold text-center text-sm sm:text-base md:text-lg cursor-pointer"
               >
                 {skill}
               </motion.div>
@@ -224,11 +224,11 @@ export default function Landing() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white text-center transform rotate-2"
           >
             MY WORK
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projects.projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -264,18 +264,18 @@ export default function Landing() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-black mb-12 text-white transform -rotate-2"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-8 sm:mb-12 text-white transform -rotate-2"
           >
             CONTACT
           </motion.h2>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 sm:mb-12">
             <motion.a
               href={`tel:${profile.phone}`}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, rotate: -2 }}
-              className="bg-white text-black p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-4 font-bold text-lg cursor-pointer"
+              className="bg-white text-black p-4 sm:p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-3 sm:gap-4 font-bold text-sm sm:text-base md:text-lg cursor-pointer"
             >
               <Phone size={24} strokeWidth={3} />
               {profile.phone}
@@ -286,7 +286,7 @@ export default function Landing() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="bg-white text-black p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-4 font-bold text-lg cursor-pointer"
+              className="bg-white text-black p-4 sm:p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-3 sm:gap-4 font-bold text-sm sm:text-base md:text-lg cursor-pointer break-all sm:break-normal"
             >
               <Mail size={24} strokeWidth={3} />
               {profile.email}
@@ -313,7 +313,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="py-8 px-8 bg-black border-t-4 border-white">
-        <p className="text-center text-white font-bold text-lg">
+        <p className="text-center text-white font-bold text-sm sm:text-base md:text-lg">
           © 2025 {profile.name} - ALL RIGHTS RESERVED
         </p>
       </footer>
