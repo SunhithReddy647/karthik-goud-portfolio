@@ -73,32 +73,64 @@ export default function Landing() {
         transition={{ duration: 0.6 }}
         className="fixed top-0 left-0 right-0 z-50 bg-black border-b-4 border-white shadow-[0_4px_0px_#FF0080]"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex justify-between items-center">
-          <motion.h1
-            whileHover={{ scale: 1.05, rotate: -2 }}
-            className="text-xl sm:text-2xl font-black text-[#00FF80] cursor-pointer"
-            onClick={() => scrollToSection("hero")}
-          >
-            {profile.name}
-          </motion.h1>
-          <div className="flex gap-2 sm:gap-4 md:gap-6 items-center">
-            {[
-              { label: "About", id: "about" },
-              { label: "Education", id: "education" },
-              { label: "Skills", id: "skills" },
-              { label: "Work", id: "portfolio" },
-              { label: "Contact", id: "contact" },
-            ].map((link, index) => (
-              <motion.button
-                key={link.id}
-                whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 2 : -2 }}
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4">
+          <div className="flex justify-between items-center">
+            <motion.h1
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              className="text-xl sm:text-2xl font-black text-[#00FF80] cursor-pointer"
+              onClick={() => scrollToSection("hero")}
+            >
+              {profile.name}
+            </motion.h1>
+            <div className="hidden sm:flex gap-2 sm:gap-4 md:gap-6 items-center">
+              {[
+                { label: "About", id: "about" },
+                { label: "Education", id: "education" },
+                { label: "Skills", id: "skills" },
+                { label: "Work", id: "portfolio" },
+                { label: "Contact", id: "contact" },
+              ].map((link, index) => (
+                <motion.button
+                  key={link.id}
+                  whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 2 : -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+                >
+                  {link.label}
+                </motion.button>
+              ))}
+              <motion.a
+                href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
+                download="Karthik_Goud_Resume.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(link.id)}
-                className="text-xs sm:text-sm md:text-base font-bold text-white hover:text-[#FF0080] transition-colors"
+                className="bg-[#00FF80] text-black px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-black shadow-[4px_4px_0px_#000000] font-bold text-xs sm:text-sm hover:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer"
               >
-                {link.label}
-              </motion.button>
-            ))}
+                RESUME
+              </motion.a>
+            </div>
+            <div className="flex sm:hidden gap-2 items-center">
+              {[
+                { label: "About", id: "about" },
+                { label: "Work", id: "portfolio" },
+                { label: "Contact", id: "contact" },
+              ].map((link, index) => (
+                <motion.button
+                  key={link.id}
+                  whileHover={{ scale: 1.1, rotate: index % 2 === 0 ? 2 : -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-xs font-bold text-white hover:text-[#FF0080] transition-colors"
+                >
+                  {link.label}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+          <div className="flex sm:hidden justify-center mt-3">
             <motion.a
               href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
               download="Karthik_Goud_Resume.jpg"
@@ -106,7 +138,7 @@ export default function Landing() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#00FF80] text-black px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-black shadow-[4px_4px_0px_#000000] font-bold text-xs sm:text-sm hover:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer"
+              className="bg-[#00FF80] text-black px-4 py-2 border-2 border-black shadow-[4px_4px_0px_#000000] font-bold text-xs hover:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer"
             >
               RESUME
             </motion.a>
