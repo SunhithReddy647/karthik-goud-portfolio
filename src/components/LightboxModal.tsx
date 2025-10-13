@@ -62,11 +62,11 @@ export default function LightboxModal({ title, images, description, onClose }: L
             <X size={28} strokeWidth={3} className="sm:w-8 sm:h-8" />
           </button>
 
-          <div className="relative">
+          <div className="relative flex items-center justify-center" style={{ maxHeight: 'calc(100vh - 200px)' }}>
             <img
               src={images[currentIndex]}
               alt={`${title} - Image ${currentIndex + 1}`}
-              className="w-full h-auto rounded-lg border-4 border-black shadow-[8px_8px_0px_#000000]"
+              className="max-w-full max-h-full h-auto object-contain rounded-lg border-4 border-black shadow-[8px_8px_0px_#000000]"
             />
 
             {images.length > 1 && (
