@@ -1,43 +1,331 @@
-// TODO: REPLACE THIS LANDING PAGE WITH AN ELEGANT, THEMATIC, AND WELL-DESIGNED LANDING PAGE RELEVANT TO THE PROJECT
 import { motion } from "framer-motion";
-import { Loader } from "lucide-react";
+import { ExternalLink, Mail, Phone, Youtube, Instagram } from "lucide-react";
+import { useEffect, useState } from "react";
+import LightboxModal from "@/components/LightboxModal";
+
+interface Profile {
+  name: string;
+  role: string;
+  about: string;
+  education: Array<{ degree: string; institute: string; years: string }>;
+  phone: string;
+  email: string;
+  profileImage: string;
+  backgroundImage: string;
+}
+
+interface Skills {
+  skills: string[];
+}
+
+interface Project {
+  title: string;
+  image: string;
+}
+
+interface Projects {
+  projects: Project[];
+}
 
 export default function Landing() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen flex flex-col"
-    >
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [skills, setSkills] = useState<Skills | null>(null);
+  const [projects, setProjects] = useState<Projects | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-      
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="max-w-5xl mx-auto relative px-4">
-        {/* TODO: landing page goes here; replace with the landing page */}
-        <div className="flex justify-center">
-          <img
-            src="./logo.svg"
-            alt="Lock Icon"
-            width={64}
-            height={64}
-            className="rounded-lg mb-8 mt-24"
-          />
-        </div>
-        <div className="flex items-center justify-center">
-          <Loader className="h-8 w-8 animate-spin mr-4" />
-          <a
-            href="https://vly.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary underline hover:text-primary/80 transition-colors"
-          >
-            vly.ai
-          </a>&nbsp; is generating your project...
-        </div>
-        </div>
+  useEffect(() => {
+    Promise.all([
+      fetch("/data/profile.json").then((r) => r.json()),
+      fetch("/data/skills.json").then((r) => r.json()),
+      fetch("/data/projects.json").then((r) => r.json()),
+    ]).then(([profileData, skillsData, projectsData]) => {
+      setProfile(profileData);
+      setSkills(skillsData);
+      setProjects(projectsData);
+    });
+  }, []);
+
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  if (!profile || !skills || !projects) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="w-16 h-16 border-4 border-[#FF0080] border-t-[#00FF80] rounded-lg shadow-[4px_4px_0px_#000000]"
+        />
       </div>
-    </motion.div>
+    );
+  }
+
+  return (
+    <div className="bg-black text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+      {/* Hero Section */}
+      <section
+        id="hero"
+        className="min-h-screen relative flex items-center justify-center py-24 px-8 overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${profile.backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              initial={{ rotate: -2 }}
+              animate={{ rotate: 2 }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="inline-block bg-[#00FF80] text-black px-4 py-2 border-4 border-black shadow-[4px_4px_0px_#000000] mb-6 font-bold text-sm"
+            >
+              CREATIVE DESIGNER
+            </motion.div>
+            <h1 className="text-6xl md:text-7xl font-black mb-4 leading-tight">
+              {profile.name}
+            </h1>
+            <p className="text-2xl md:text-3xl mb-8 text-[#00FF80] font-bold">
+              {profile.role}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("portfolio")}
+                className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
+              >
+                VIEW WORK
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection("contact")}
+                className="bg-black text-white px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+              >
+                CONTACT ME
+              </motion.button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <motion.div
+              animate={{ rotate: [0, 5, 0, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="relative"
+            >
+              <img
+                src={profile.profileImage}
+                alt={profile.name}
+                className="w-80 h-80 rounded-full border-8 border-black shadow-[12px_12px_0px_#FF0080] object-cover"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 px-8 bg-[#00FF80]">
+        <div className="max-w-4xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black mb-8 text-black text-center transform -rotate-2"
+          >
+            ABOUT ME
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-black leading-relaxed bg-white p-8 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold"
+          >
+            {profile.about}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-24 px-8 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform rotate-2"
+          >
+            EDUCATION
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {profile.education.map((edu, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                whileHover={{ y: -8, rotate: index % 2 === 0 ? 2 : -2 }}
+                className="bg-[#0080FF] p-8 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[12px_12px_0px_#000000] transition-all cursor-pointer"
+              >
+                <h3 className="text-2xl font-black mb-2 text-white">{edu.degree}</h3>
+                <p className="text-lg font-bold text-black mb-1">{edu.institute}</p>
+                <p className="text-md font-bold text-white">{edu.years}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-24 px-8 bg-[#FF0080]">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform -rotate-2"
+          >
+            SKILLS
+          </motion.h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {skills.skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="bg-black text-[#00FF80] px-6 py-4 border-4 border-white shadow-[6px_6px_0px_#000000] font-bold text-center text-lg cursor-pointer"
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Gallery Section */}
+      <section id="portfolio" className="py-24 px-8 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black mb-12 text-white text-center transform rotate-2"
+          >
+            MY WORK
+          </motion.h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 3 : -3 }}
+                onClick={() => setSelectedProject(project)}
+                className="relative group cursor-pointer overflow-hidden border-4 border-white shadow-[8px_8px_0px_#FF0080] hover:shadow-[12px_12px_0px_#00FF80] transition-all"
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="text-center">
+                    <h3 className="text-2xl font-black text-white mb-2">{project.title}</h3>
+                    <ExternalLink className="mx-auto text-[#00FF80]" size={32} strokeWidth={3} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 px-8 bg-[#0080FF]">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-black mb-12 text-white transform -rotate-2"
+          >
+            CONTACT
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <motion.a
+              href={`tel:${profile.phone}`}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              className="bg-white text-black p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-4 font-bold text-lg cursor-pointer"
+            >
+              <Phone size={24} strokeWidth={3} />
+              {profile.phone}
+            </motion.a>
+            <motion.a
+              href={`mailto:${profile.email}`}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              className="bg-white text-black p-6 border-4 border-black shadow-[8px_8px_0px_#000000] hover:shadow-[4px_4px_0px_#000000] transition-all flex items-center justify-center gap-4 font-bold text-lg cursor-pointer"
+            >
+              <Mail size={24} strokeWidth={3} />
+              {profile.email}
+            </motion.a>
+          </div>
+          <div className="flex justify-center gap-6">
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.2, rotate: 10 }}
+              className="bg-[#FF0080] p-4 border-4 border-black shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] transition-all cursor-pointer"
+            >
+              <Youtube size={32} strokeWidth={3} className="text-white" />
+            </motion.a>
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.2, rotate: -10 }}
+              className="bg-[#00FF80] p-4 border-4 border-black shadow-[6px_6px_0px_#000000] hover:shadow-[3px_3px_0px_#000000] transition-all cursor-pointer"
+            >
+              <Instagram size={32} strokeWidth={3} className="text-black" />
+            </motion.a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-8 bg-black border-t-4 border-white">
+        <p className="text-center text-white font-bold text-lg">
+          © 2025 {profile.name} - ALL RIGHTS RESERVED
+        </p>
+      </footer>
+
+      {/* Lightbox Modal */}
+      {selectedProject && (
+        <LightboxModal
+          image={selectedProject.image}
+          title={selectedProject.title}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
   );
 }

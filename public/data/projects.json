@@ -1,0 +1,10 @@
+{
+  "projects": [
+    { "title": "Brand Poster Design", "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" },
+    { "title": "Motion Graphic Project", "image": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&h=600&fit=crop" },
+    { "title": "YouTube Video Edit", "image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop" },
+    { "title": "Magazine Cover", "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=600&fit=crop" },
+    { "title": "Typography Art", "image": "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&h=600&fit=crop" },
+    { "title": "Brand Identity", "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" }
+  ]
+}
