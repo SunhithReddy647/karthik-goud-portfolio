@@ -81,7 +81,7 @@ export default function Landing() {
           >
             {profile.name}
           </motion.h1>
-          <div className="flex gap-2 sm:gap-4 md:gap-6">
+          <div className="flex gap-2 sm:gap-4 md:gap-6 items-center">
             {[
               { label: "About", id: "about" },
               { label: "Education", id: "education" },
@@ -99,6 +99,17 @@ export default function Landing() {
                 {link.label}
               </motion.button>
             ))}
+            <motion.a
+              href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
+              download="Karthik_Goud_Resume.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-[#00FF80] text-black px-3 sm:px-4 py-1.5 sm:py-2 border-2 border-black shadow-[4px_4px_0px_#000000] font-bold text-xs sm:text-sm hover:shadow-[2px_2px_0px_#000000] transition-all cursor-pointer"
+            >
+              RESUME
+            </motion.a>
           </div>
         </div>
       </motion.nav>
