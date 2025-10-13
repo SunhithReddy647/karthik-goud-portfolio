@@ -79,14 +79,6 @@ export default function Landing() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ rotate: -2 }}
-              animate={{ rotate: 2 }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-              className="inline-block bg-[#00FF80] text-black px-4 py-2 border-4 border-black shadow-[4px_4px_0px_#000000] mb-6 font-bold text-sm"
-            >
-              CREATIVE DESIGNER
-            </motion.div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
               {profile.name}
             </h1>
@@ -119,17 +111,26 @@ export default function Landing() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex justify-center"
           >
-            <motion.div
-              animate={{ rotate: [0, 5, 0, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="relative"
-            >
-              <img
-                src={profile.profileImage}
-                alt={profile.name}
-                className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
-              />
-            </motion.div>
+            <div className="relative">
+              <motion.div
+                animate={{ rotate: [0, 5, 0, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              >
+                <img
+                  src={profile.profileImage}
+                  alt={profile.name}
+                  className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ rotate: -2 }}
+                animate={{ rotate: 2 }}
+                transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                className="absolute -bottom-4 -left-4 bg-[#00FF80] text-black px-4 py-2 border-4 border-black shadow-[4px_4px_0px_#000000] font-bold text-sm"
+              >
+                CREATIVE DESIGNER
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
