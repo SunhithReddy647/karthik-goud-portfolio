@@ -299,30 +299,11 @@ export default function Landing() {
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.4 }}
                 />
-                <motion.div 
-                  className="absolute inset-0 bg-black/80 flex items-center justify-center"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="text-center">
-                    <motion.h3 
-                      className="text-2xl font-black text-white mb-2"
-                      initial={{ y: 20, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      transition={{ delay: 0.1 }}
-                    >
-                      {project.title}
-                    </motion.h3>
-                    <motion.div
-                      initial={{ scale: 0, rotate: -180 }}
-                      whileHover={{ scale: 1, rotate: 0 }}
-                      transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                    >
-                      <ExternalLink className="mx-auto text-[#00FF80]" size={32} strokeWidth={3} />
-                    </motion.div>
-                  </div>
-                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-center pb-6">
+                  <h3 className="text-2xl font-black text-white text-center px-4">
+                    {project.title}
+                  </h3>
+                </div>
               </motion.div>
             ))}
           </div>
