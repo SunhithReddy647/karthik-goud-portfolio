@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Mail, Phone, Youtube, Instagram } from "lucide-react";
+import { ExternalLink, Mail, Phone, Youtube, Instagram, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import LightboxModal from "@/components/LightboxModal";
 
@@ -35,6 +35,7 @@ export default function Landing() {
   const [skills, setSkills] = useState<Skills | null>(null);
   const [projects, setProjects] = useState<ProjectDetails | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectDetail | null>(null);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     Promise.all([
@@ -50,6 +51,28 @@ export default function Landing() {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleResumeDownload = async () => {
+    setIsDownloading(true);
+    try {
+      const response = await fetch("https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Karthik_Goud_Resume.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download failed:", error);
+      // Fallback to opening in new tab
+      window.open("https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg", "_blank");
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   if (!profile || !skills || !projects) {
