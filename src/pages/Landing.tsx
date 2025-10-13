@@ -66,58 +66,20 @@ export default function Landing() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="min-h-screen relative flex items-center justify-center py-24 px-8 overflow-hidden"
+        className="min-h-screen relative flex flex-col items-center justify-start pt-12 sm:pt-16 md:pt-20 px-6 sm:px-8 overflow-hidden"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${profile.backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div className="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              initial={{ rotate: -2 }}
-              animate={{ rotate: 2 }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-              className="inline-block bg-[#00FF80] text-black px-4 py-2 border-4 border-black shadow-[4px_4px_0px_#000000] mb-6 font-bold text-sm"
-            >
-              CREATIVE DESIGNER
-            </motion.div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 leading-tight">
-              {profile.name}
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 text-[#00FF80] font-bold">
-              {profile.role}
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <motion.button
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection("portfolio")}
-                className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
-              >
-                VIEW WORK
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection("contact")}
-                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
-              >
-                CONTACT ME
-              </motion.button>
-            </div>
-          </motion.div>
-
+        <div className="max-w-4xl w-full flex flex-col items-center relative z-10">
+          {/* Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center"
+            transition={{ duration: 0.8 }}
+            className="mb-6 sm:mb-8"
           >
             <motion.div
               animate={{ rotate: [0, 5, 0, -5, 0] }}
@@ -127,9 +89,57 @@ export default function Landing() {
               <img
                 src={profile.profileImage}
                 alt={profile.name}
-                className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
+                className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-6 sm:border-8 border-black shadow-[8px_8px_0px_#FF0080] sm:shadow-[12px_12px_0px_#FF0080] object-cover"
               />
             </motion.div>
+          </motion.div>
+
+          {/* Name and Tagline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-8 sm:mb-10"
+          >
+            <motion.div
+              initial={{ rotate: -2 }}
+              animate={{ rotate: 2 }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="inline-block bg-[#00FF80] text-black px-3 py-1.5 sm:px-4 sm:py-2 border-3 sm:border-4 border-black shadow-[3px_3px_0px_#000000] sm:shadow-[4px_4px_0px_#000000] mb-4 sm:mb-6 font-bold text-xs sm:text-sm"
+            >
+              CREATIVE DESIGNER
+            </motion.div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 sm:mb-4 leading-tight">
+              {profile.name}
+            </h1>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#00FF80] font-bold px-4">
+              {profile.role}
+            </p>
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center w-full px-4"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("portfolio")}
+              className="bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer w-full sm:w-auto"
+            >
+              VIEW WORK
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("contact")}
+              className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer w-full sm:w-auto"
+            >
+              CONTACT ME
+            </motion.button>
           </motion.div>
         </div>
       </section>
