@@ -190,6 +190,16 @@ export default function Landing() {
               >
                 VIEW WORK
               </motion.button>
+              <motion.a
+                whileHover={{ scale: 1.05, rotate: -1 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+              >
+                RESUME
+              </motion.a>
               <motion.button
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
