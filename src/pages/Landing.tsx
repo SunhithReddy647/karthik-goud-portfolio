@@ -192,7 +192,7 @@ export default function Landing() {
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("portfolio")}
-                className="flex-1 sm:flex-none bg-gradient-to-br from-[#FF0080] via-[#FF0099] to-[#CC0066] text-black px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-none bg-gradient-to-br from-[#FF0080] via-[#FF0099] to-[#CC0066] text-black px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer whitespace-nowrap"
               >
                 {profile.buttons?.viewWork || "VIEW WORK"}
               </motion.button>
@@ -202,7 +202,7 @@ export default function Landing() {
                 href={profile.resumeUrl || "https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-none bg-gradient-to-br from-[#00FF80] via-[#00DD70] to-[#00BB60] text-black px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap text-center"
+                className="flex-1 sm:flex-none bg-gradient-to-br from-[#00FF80] via-[#00DD70] to-[#00BB60] text-black px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer whitespace-nowrap text-center"
               >
                 {profile.buttons?.resume || "RESUME"}
               </motion.a>
@@ -210,7 +210,7 @@ export default function Landing() {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("contact")}
-                className="flex-1 sm:flex-none bg-gradient-to-br from-[#0080FF] via-[#0099FF] to-[#0066CC] text-white px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-none bg-gradient-to-br from-[#0080FF] via-[#0099FF] to-[#0066CC] text-white px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer whitespace-nowrap"
               >
                 {profile.buttons?.contact || "CONTACT ME"}
               </motion.button>
