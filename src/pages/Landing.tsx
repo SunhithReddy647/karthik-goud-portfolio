@@ -181,12 +181,12 @@ export default function Landing() {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 sm:mb-8 text-[#00FF80] font-bold">
               {profile.role}
             </p>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start items-stretch sm:items-center max-w-2xl">
               <motion.button
                 whileHover={{ scale: 1.05, rotate: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("portfolio")}
-                className="w-full sm:w-auto bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer"
+                className="flex-1 sm:flex-none bg-gradient-to-r from-[#FF0080] to-[#0080FF] text-white px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap"
               >
                 VIEW WORK
               </motion.button>
@@ -196,7 +196,7 @@ export default function Landing() {
                 href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+                className="flex-1 sm:flex-none bg-black text-white px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer whitespace-nowrap text-center"
               >
                 RESUME
               </motion.a>
@@ -204,7 +204,7 @@ export default function Landing() {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection("contact")}
-                className="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 sm:py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-base sm:text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer"
+                className="flex-1 sm:flex-none bg-black text-white px-8 py-4 border-4 border-white shadow-[8px_8px_0px_#FFFFFF] font-bold text-lg hover:shadow-[4px_4px_0px_#FFFFFF] transition-all cursor-pointer whitespace-nowrap"
               >
                 CONTACT ME
               </motion.button>
