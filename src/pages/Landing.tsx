@@ -12,6 +12,12 @@ interface Profile {
   email: string;
   profileImage: string;
   backgroundImage: string;
+  buttons?: {
+    viewWork: string;
+    resume: string;
+    contact: string;
+  };
+  resumeUrl?: string;
 }
 
 interface Skills {
@@ -188,17 +194,17 @@ export default function Landing() {
                 onClick={() => scrollToSection("portfolio")}
                 className="flex-1 sm:flex-none bg-[#FF0080] text-black px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap"
               >
-                VIEW WORK
+                {profile.buttons?.viewWork || "VIEW WORK"}
               </motion.button>
               <motion.a
                 whileHover={{ scale: 1.05, rotate: -1 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
+                href={profile.resumeUrl || "https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-none bg-[#00FF80] text-black px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap text-center"
               >
-                RESUME
+                {profile.buttons?.resume || "RESUME"}
               </motion.a>
               <motion.button
                 whileHover={{ scale: 1.05, rotate: 2 }}
@@ -206,7 +212,7 @@ export default function Landing() {
                 onClick={() => scrollToSection("contact")}
                 className="flex-1 sm:flex-none bg-[#0080FF] text-white px-8 py-4 border-4 border-black shadow-[8px_8px_0px_#000000] font-bold text-lg hover:shadow-[4px_4px_0px_#000000] transition-all cursor-pointer whitespace-nowrap"
               >
-                CONTACT ME
+                {profile.buttons?.contact || "CONTACT ME"}
               </motion.button>
             </div>
           </motion.div>

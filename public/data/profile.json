@@ -9,5 +9,11 @@
   "phone": "+91 7981252249",
   "email": "shashikirangoud912@gmail.com",
   "profileImage": "https://harmless-tapir-303.convex.cloud/api/storage/df3b53fe-6b08-415a-ae34-3a41c2dc3319",
-  "backgroundImage": "https://harmless-tapir-303.convex.cloud/api/storage/d9d4ac55-7b8b-458d-976f-39de31b9b466"
+  "backgroundImage": "https://harmless-tapir-303.convex.cloud/api/storage/d9d4ac55-7b8b-458d-976f-39de31b9b466",
+  "buttons": {
+    "viewWork": "VIEW WORK",
+    "resume": "RESUME",
+    "contact": "CONTACT ME"
+  },
+  "resumeUrl": "https://i.ibb.co/svNwmMrt/Black-Modern-Graphic-Designer-Creative-Resume-page-0001.jpg"
 }
