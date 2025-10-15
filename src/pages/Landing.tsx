@@ -182,6 +182,14 @@ export default function Landing() {
             transition={{ duration: 0.8 }}
             className="order-2 md:order-1 text-center md:text-left"
           >
+            <motion.div
+              initial={{ rotate: -2, y: -10 }}
+              animate={{ rotate: 2, y: 0 }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="inline-block bg-[#00FF80] text-black px-4 py-2 border-4 border-black shadow-[4px_4px_0px_#000000] font-bold text-sm mb-4"
+            >
+              🟢 OPEN TO WORK
+            </motion.div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 leading-tight">
               {profile.name}
             </h1>
